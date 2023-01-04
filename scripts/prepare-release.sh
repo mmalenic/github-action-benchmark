@@ -24,11 +24,11 @@ if ! git diff --cached --quiet; then
     exit 1
 fi
 
-branch="$(git symbolic-ref --short HEAD)"
-if [[ "$branch" != "master" ]]; then
-    echo 'Current branch is not master. Please move to master before running this script' >&2
-    exit 1
-fi
+# branch="$(git symbolic-ref --short HEAD)"
+# if [[ "$branch" != "master" ]]; then
+#     echo 'Current branch is not master. Please move to master before running this script' >&2
+#     exit 1
+# fi
 
 echo "Releasing to $version branch..."
 
