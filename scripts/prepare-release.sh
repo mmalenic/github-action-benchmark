@@ -65,3 +65,4 @@ git add -f action.yml ./dist/src/*.js package.json package-lock.json node_module
 set +x
 
 echo "Done. Please check 'git diff --cached' to verify changes. If ok, add version tag and push it to remote"
+echo "i.e: git commit -am 'New release' && git push && git tag v2.0.0 && git push --tags"
