@@ -154,7 +154,7 @@ jobs:
     name: Performance regression check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
         with:
           go-version: "stable"
@@ -163,7 +163,7 @@ jobs:
         run: go test -bench 'BenchmarkFib' | tee output.txt
       # Download previous benchmark result from cache (if exists)
       - name: Download previous benchmark data
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ./cache
           key: ${{ runner.os }}-benchmark
@@ -290,7 +290,7 @@ jobs:
     name: Performance regression check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
         with:
           go-version: "stable"
@@ -529,6 +529,13 @@ larger than zero. If the number of benchmark results for some benchmark suite ex
 the oldest one will be removed before storing the results to file. By default this value is empty
 which means there is no limit.
 
+#### `skip-fetch-gh-pages` (Optional)
+
+- Type: Boolean
+- Default: `false`
+
+If set to `true`, the workflow will skip fetching branch defined with the `gh-pages-branch` variable.
+
 
 ### Action outputs
 
@@ -626,21 +633,21 @@ Every release will appear on your GitHub notifications page.
 
 
 
-[build-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/CI/badge.svg?branch=master&event=push
+[build-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/ci.yml/badge.svg
 [ci]: https://github.com/benchmark-action/github-action-benchmark/actions?query=workflow%3ACI
 [codecov-badge]: https://codecov.io/gh/benchmark-action/github-action-benchmark/branch/master/graph/badge.svg
 [codecov]: https://app.codecov.io/gh/benchmark-action/github-action-benchmark
 [release-badge]: https://img.shields.io/github/v/release/benchmark-action/github-action-benchmark.svg
 [marketplace]: https://github.com/marketplace/actions/continuous-benchmark
 [proj]: https://github.com/benchmark-action/github-action-benchmark
-[rust-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/Rust%20Example/badge.svg
-[go-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/Go%20Example/badge.svg
-[benchmarkjs-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/Benchmark.js%20Example/badge.svg
-[pytest-benchmark-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/Python%20Example%20with%20pytest/badge.svg
-[cpp-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/C%2B%2B%20Example/badge.svg
-[catch2-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/Catch2%20C%2B%2B%20Example/badge.svg
-[julia-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/Julia%20Example%20with%20BenchmarkTools.jl/badge.svg
-[java-badge]: https://github.com/benchmark-action/github-action-benchmark/workflows/JMH%20Example/badge.svg
+[rust-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/rust.yml/badge.svg
+[go-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/go.yml/badge.svg
+[benchmarkjs-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/benchmarkjs.yml/badge.svg
+[pytest-benchmark-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/pytest.yml/badge.svg
+[cpp-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/cpp.yml/badge.svg
+[catch2-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/catch2.yml/badge.svg
+[julia-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/julia.yml/badge.svg
+[java-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/java.yml/badge.svg
 [github-action]: https://github.com/features/actions
 [cargo-bench]: https://doc.rust-lang.org/cargo/commands/cargo-bench.html
 [cargo-criterion]: https://crates.io/crates/cargo-criterion
@@ -669,6 +676,6 @@ Every release will appear on your GitHub notifications page.
 [lighthouse-ci]: https://github.com/GoogleChrome/lighthouse-ci
 [BenchmarkTools.jl]: https://github.com/JuliaCI/BaseBenchmarks.jl
 [benchmarkdotnet]: https://benchmarkdotnet.org
-[benchmarkdotnet-badge]: https://github.com/rhysd/github-action-benchmark/workflows/Benchmark.Net%20Example/badge.svg
+[benchmarkdotnet-badge]: https://github.com/benchmark-action/github-action-benchmark/actions/workflows/benchmarkdotnet.yml/badge.svg
 [benchmarkdotnet-workflow-example]: https://github.com/rhysd/github-action-benchmark/actions?query=workflow%3A%22Benchmark.Net+Example%22
 [job-summaries]: https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
